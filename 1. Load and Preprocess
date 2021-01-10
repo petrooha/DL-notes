@@ -1,0 +1,33 @@
+import numpy as np
+
+# read data from text files
+with open('reviews.txt', 'r') as f:
+    reviews = f.read()
+with open('labels.txt', 'r') as f:
+    labels = f.read()
+
+
+print(reviews[:2000])
+print()
+print(labels[:20])
+
+
+# Pre-process text
+
+from string import punctuation
+
+print(punctuation)
+
+# get rid of punctuation
+reviews = reviews.lower() # lowercase, standardize
+all_text = ''.join([c for c in reviews if c not in punctuation])
+
+# split by new lines and spaces
+reviews_split = all_text.split('\n')
+all_text = ' '.join(reviews_split)
+
+# create a list of words
+words = all_text.split()
+
+words[:30]
+
