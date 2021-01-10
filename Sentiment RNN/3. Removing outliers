@@ -1,0 +1,19 @@
+# outlier review stats
+review_lens = [len(x) for x in reviews_ints]
+zero_lens = 0
+for r in review_lens:
+    if r == 0:
+        zero_lens +=1
+print("Zero-length reviews: {}".format(zero_lens))
+print("Maximum review length: {}".format(max(review_lens)))
+
+
+print('Number of reviews before removing outliers: ', len(reviews_ints))
+
+## remove any reviews/labels with zero length from the reviews_ints list.
+non_zero_idx = [i for i, review in enumerate(reviews_ints) if len(review) > 0]
+
+reviews_ints = [reviews_ints[i] for i in non_zero_idx]
+encoded_labels = [encoded_labels[i] for i in non_zero_idx]
+
+print('Number of reviews after removing outliers: ', len(reviews_ints))
