@@ -1,0 +1,38 @@
+from collections import Counter
+
+## Build a dictionary that maps words to integers
+word_counts = Counter(words)
+sorted_vocab = sorted(word_counts, key=word_counts.get, reverse=True)
+vocab_to_int = {word: ii for ii, word in enumerate(sorted_vocab, 1)}# start at 1 not 0
+
+
+## use the dict to tokenize each review in reviews_split
+## store the tokenized reviews in reviews_ints
+
+reviews_ints = []
+for review in reviews_split:
+    reviews_ints.append([vocab_to_int[word] for word in review.split()])
+
+
+# TEST the code
+
+# stats about vocabulary
+print('Unique words: ', len((vocab_to_int)))  # should ~ 74000+
+print()
+
+# print tokens in first review
+print('Tokenized review: \n', reviews_ints[:1])
+
+
+
+
+# Encode labels
+labels_split = labels.split('\n')
+encoded_labels = np.array([1 if ii == 'positive' else 0 for ii in labels_split])
+
+# stats about labels
+print('Total Labels: ', len((encoded_labels))) 
+print()
+
+# print tokens in first label
+print('Label in ints: \n', encoded_labels[0])
