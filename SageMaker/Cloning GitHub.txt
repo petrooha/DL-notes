@@ -1,0 +1,3 @@
+cd SageMaker
+git clone https://github.com/udacity/sagemaker-deployment.git
+exit
